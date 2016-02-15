@@ -1,0 +1,63 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ artist.name }}
+			<figure class="creator">
+				<img src="{{creator.picture}}">
+				<figcaption>{{creator.name}}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+    <br>
+    <div class = 'flash'>          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+    {% endwith %}
+
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('editArtist', artist_id = artist.id )}}">
+				<button class="btn btn-default" id="new-menu-item">Edit Artist</button>
+			</a>
+			<a href="{{url_for('newAlbum', artist_id = artist.id )}}">
+				<button class="btn btn-default" id="new-album">Add Album</button>
+			</a>
+						<a href="{{url_for('deleteArtist', artist_id = artist.id )}}">
+				<button class="btn btn-default delete" id="delete-artist">Delete Artist</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	
+	{% if albums !=[] %}	
+		<div class="row">
+				<h2>Albums</h2>
+					{% for i in albums %}
+							<div style="text-align: center">
+								<h2 style="color: black">{{i.name}}</h2>
+								<p class="album-year">{{i.year}}</p>
+                                <img src="{{i.cover}}" height="400" width="400">
+                                <br><br>
+								<p>{{i.description}}</p>
+								<a href="{{url_for('editAlbum', artist_id = artist.id, album_id=i.id ) }}">Edit</a> | 
+								<a href="{{url_for('deleteAlbum', artist_id = artist.id, album_id=i.id ) }}">Delete</a>
+                                <br><br>
+							</div>
+					{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+    <div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>New Album</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" class="form-control" name="name">
+                    <br>
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description"></textarea>
+                    <br>
+					<label for="year">Year:</label>
+					<div class="input-group">
+						<input type ="text" class="form-control" maxlength="4" name="year">
+					</div>
+                    <br>
+					<label for="numtracks">Number of tracks:</label>
+                    <div class="input-group">
+					    <input type="text" maxlength="3" class="form-control" name="numtracks">
+                    </div>
+                    <br>
+					<label for="cover">Album cover URL:</label>
+					<input type="text" maxlength="300" class="form-control" name="cover">
+                    <br>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+
