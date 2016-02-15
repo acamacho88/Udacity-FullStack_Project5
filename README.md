@@ -33,7 +33,8 @@ httplib2
 ## Configurations
 
 I also made sure to disable the root user, and enable sudo by adding
-the student and grader users to the sudoers.d directory.
+the student and grader users to the sudoers.d directory (both of whose
+passwords are just their names).
 
 I blocked all incoming requests via the firewall except SSH, HTTP,
 and NTP, and changed the SSH port from its default of 22 to 2200
